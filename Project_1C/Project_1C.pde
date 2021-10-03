@@ -21,7 +21,8 @@ color c1 = color(19, 48, 35);
 color c2 = color(0); //color(67, 40, 41);
 
 void setup() {
-  size(600, 600);
+  size(600, 600, P2D);
+  frameRate(60);
   for (int i=0; i<fireflies.length; i++) {
     //Firefly(x location, y location, width, xspeed, yspeed, will die)
     fireflies[i] = new Firefly(random(100,500), random(100,500), random(5,20), random(-4,4), random(-4,4), int(random(1,5)));
