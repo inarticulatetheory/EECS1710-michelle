@@ -41,6 +41,7 @@ int bubbleCount;
 
 //poetry variables
 String[] wordType = {"noun", "adjective", "verb"}; //used to populate each word;
+String finalPoem;
 
 //set up classes for visual elements
 Eye eye;
@@ -115,7 +116,6 @@ void initialScreen() {
   if (mousePressed) {
     if(gameScreen == 0) {
       gameScreen = 1;
-      gamePlay();
     }
   }
 }
@@ -144,8 +144,15 @@ void gamePlay() {
 
 /* ===== ROUNDOVER START ===== */
 void roundOver() {
-  //displayPoem();
-  //if user clicks box they can write another poem
+  //visuals
+  background(240,180,240);
+  textAlign(CENTER);
+  text(finalPoem, width/2, height/2);
+  
+  //start game when click happens
+  if (mousePressed) {
+      gameScreen = 1;
+    }
 }
 /* ===== ROUNDOVER END ===== */
 
