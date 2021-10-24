@@ -17,12 +17,23 @@
 // ---
 // 4. Word Arrays from
 // https://gist.github.com/ijmacdowell/8325491
+// ---
+// 5. Characters on a curve adapted from
+// http://learningprocessing.com/examples/chapter-17/example-17-8/
 /* ===== END CODE CITED ===== */
 
 
 /* ===== VARIABLES START =====*/
+PFont fA;
+PFont fV;
+
 //Variable to indicate active game screen
 int gameScreen = 0; //0 = initial screen, 1 = gameplay, 2 = game over
+
+//Static game screens
+String rules;
+String ready;
+String title;
 
 //movement variables
 float gravity = 0.03;
@@ -42,6 +53,7 @@ int bubbleCount;
 //poetry variables
 String[] wordType = {"noun", "adjective", "verb"}; //used to populate each word;
 String finalPoem;
+String poetryConstellation = ""; //stores poem in progress
 
 //set up classes for visual elements
 Eye eye;
@@ -63,6 +75,16 @@ Poem poem;
 /* ===== SETUP START ===== */
 void setup() {
   size(1000, 700);
+  fA = loadFont("ASTORIA.vlw");
+  fV = loadFont("VCR.vlw");
+  textFont(fV);
+  
+  //static text
+  title = "SAD POETRY GENERATOR"; 
+  rules = "LIKE ALL TEENAGERS WHO CAME BEFORE YOU, YOU ARE SUFFERING FROM THE TRAGIC AND PROFOUND EXPERIENCE OF BEING. \n AND, LIKE ALL TEENAGERS WHO CAME BEFORE YOU, NO ONE UNDERSTANDS YOUR UNIQUE AND SPECIFIC EXPRESSION OF SELF. \n PUT THOSE TEARS TO PRODUCTIVE USE: BUILD YOUR SADDEST POEM BY POPPING WORDS. \n THEY'LL FINALLY UNDERSTAND YOU WHEN THEY READ YOUR FINAL CREATION";
+  ready = "PRESS SPACE TO DROP A TEAR / CLICK ANYWHERE TO START";
+  
+  //dimensions
   bottom = height - tide; //adjust bottom edge as tide rises
   
   //set up eye
@@ -74,10 +96,10 @@ void setup() {
   incrementor = 1;
   
   //set up bubbles
-  bubbleCount = 30;
+  bubbleCount = 34;
   bubbles = new ArrayList<Bubbles>(); //place bubble randomly in canvas
   for (int i=0; i<bubbleCount; i++) {
-    bubbles.add(new Bubbles(random(0, width), random(0,height), random(40,90), int(random(190,255))));
+    bubbles.add(new Bubbles(random(0, width), random(0,height), random(40,90)));
   }
   
   //set up poetry
@@ -108,9 +130,21 @@ void draw() {
 /* ===== START INITIALSCREEN START ===== */
 void initialScreen() {
   //visuals
-  background(200,0,240);
+  background(8,50,255);
+  
   textAlign(CENTER);
-  text("explain game placeholder / click to start", width/2, height/2);
+  fill(255);
+  textSize(50);
+  text(title, width/2, height/3);
+  
+  textLeading(40);
+  textSize(15);
+  text(rules, width/2, height/2);
+  
+  textSize(15);
+  text(ready, width/2, height - height/4);
+
+
   
   //start game when click happens
   if (mousePressed) {
@@ -125,6 +159,7 @@ void initialScreen() {
 /* ===== GAMEPLAY START ===== */
 void gamePlay() {
   background(40, 20, 100);
+  poem.count();
   eye.run();
   puddle.draw();
   
@@ -145,14 +180,18 @@ void gamePlay() {
 /* ===== ROUNDOVER START ===== */
 void roundOver() {
   //visuals
-  background(240,180,240);
+  background(91,35,165);
   textAlign(CENTER);
+  textSize(25);
+  fill(240,180,240);
   text(finalPoem, width/2, height/2);
   
+  /*
   //start game when click happens
   if (mousePressed) {
       gameScreen = 1;
     }
+    */
 }
 /* ===== ROUNDOVER END ===== */
 

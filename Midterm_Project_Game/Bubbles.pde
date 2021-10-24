@@ -13,13 +13,17 @@ class Bubbles {
   
   //action variables
   boolean active = true;
+  
+  //poetry variables
+  String thisType; //indicates the word type: noun, adj, verb
+  
+
 
   /* ===== VARIABLES END ===== */
   
   /* ===== CONSTRUCTOR START ===== */
-  Bubbles(float x, float y, float _w, int _c) {    
+  Bubbles(float x, float y, float _w) {    
     position = new PVector(x, y); 
-    bubbleColor = color(_c);
     velocity = PVector.random2D();
     velocity.mult(0.3);
     w = _w;
@@ -28,11 +32,19 @@ class Bubbles {
     
     //used for collision detection since position variables are also PVectors
     bubbleSize = new PVector(w, w);  
-
     
-    //get variables for collision detection
-    //currentWord = _currentBubble;
-    //otherWords = _otherBubbles;
+    //assign a word type
+    int randomType = round(random(0,2)); //used to get a random position in the word type array
+    thisType = wordType[randomType]; //then create a variable to use that type to access the corresponsing array
+  
+    //use for fill
+    if (thisType == "noun"){
+      bubbleColor = color(229, 197, 197); //dusty pink
+    } else if (thisType == "adjective") {
+      bubbleColor = color(211, 197, 229); //soft purple
+    } else if (thisType == "verb") {
+      bubbleColor = color(197, 204, 229); //periwinkle blue
+    } 
   }
   /* ===== CONSTRUCTOR END ===== */
   
@@ -47,16 +59,21 @@ class Bubbles {
   /* ===== RUN BUBBLES END ===== */
   
   /* ===== ADMIN START ===== */
-  void admin(){
-    position.add(velocity);
+  void admin(){  
     
+    //move around
+    position.add(velocity);
+       
+    //check for collision with tear
     for (Tears t : eye.tears) {
-      //if this bubble is active AND hit with tear
       if (active && tempHitDetection(position, t.position, bubbleSize)) {
         active = false;
         burst();
       }
     }
+    
+    //add to constellation when burst
+    constellation();
   }
   /* ===== ADMIN END ===== */
 
@@ -64,9 +81,14 @@ class Bubbles {
   /* ===== DRAW BUBBLES START ===== */
   void draw() {    
     //draw bubble
-    fill(bubbleColor, 80); //apply 80 alpha
+    fill(bubbleColor, 90); //apply 80 alpha
     ellipseMode(CENTER);
     ellipse(position.x, position.y, w, w);
+    
+    //add text
+    fill(255);
+    textSize(16);
+    text(thisType,position.x, position.y);
     
     //draw reflection
     fill(255);
@@ -208,11 +230,45 @@ class Bubbles {
     fill(255);
     ellipse(position.x, position.y, w*1.5, w*1.5);
     
-    //choose a word
-    int randomType = round(random(0,2)); //used to get a random position in the word type array
-    String thisType = wordType[randomType]; //then create a variable to use that type to access the corresponsing array
-    poem.write(thisType);
+   poem.write(thisType);
   }
   /* ===== BURST END ===== */
+  
+  
+  /* ===== POETRY CONSTELLATION ===== */
+  void constellation() {
+    //POETRY CONSTELLATION
+    // We must keep track of our position along the curve
+    float arclength = 0;
+    
+    if (poetryConstellation.length() > 1) { //make sure there's at least one word
+      for (int i = 0; i < poetryConstellation.length(); i++) {
+        // Instead of a constant width, we check the width of each character.
+        char currentChar = poetryConstellation.charAt(i);
+        float w = textWidth(currentChar);
+    
+        // Each box is centered so we move half the width
+        arclength += w/2;
+        // Angle in radians is the arclength divided by the radius
+        // Starting on the left side of the circle by adding PI
+        float theta = PI + arclength / radius;
+    
+        pushMatrix();
+        // Polar to cartesian coordinate conversion
+        translate(radius*cos(theta), radius*sin(theta));
+        // Rotate the box
+        rotate(theta+PI/2); // rotation is offset by 90 degrees
+        // Display the character
+        fill(255,100);
+        textSize(8);
+        text(currentChar,position.x,position.y);
+        popMatrix();
+        // Move halfway again
+        arclength += w/2;
+        }
+      }
+    }
+    /* ===== POETRY CONSTELLATION END ===== */
+
 
 }

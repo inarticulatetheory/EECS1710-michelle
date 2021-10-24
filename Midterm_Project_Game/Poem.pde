@@ -4,10 +4,11 @@ class Poem {
   String[] lineTwo = new String[7];
   String[] lineThree = new String[5];
   String finalL1, finalL2, finalL3;
-  int wordCount;
   int adjectiveCount;
   int nounCount;
   int verbCount;
+  int wordCount;
+  String status;
   int l1;
   int l2;
   int l3;
@@ -55,6 +56,7 @@ class Poem {
         l3++;
       }
       wordCount++; //increment wordCount no matter what array the word is put into
+      poetryConstellation = poetryConstellation + tempWord;
     } else {
       read(); //poem is ready to be diplayed
     }
@@ -68,4 +70,54 @@ class Poem {
     finalPoem = finalL1 + "\n" + finalL2 + "\n" +finalL3;
     gameScreen = 2; //end round
   }
+  
+  /* ===== COUNT START ===== */
+  //keeps track of how many words are in poem
+  //and displays on game screen
+  void count(){
+    //holder
+    rectMode(CORNER);
+    fill(255,80);
+    rect(0,0,200,30);
+    
+    //text
+    textAlign(LEFT);
+    textSize(10);
+    fill(80);
+    text("POEM IS",10,20);
+    
+    textAlign(CENTER);
+    textSize(40);
+    text(wordCount,70,30);
+    
+    textAlign(LEFT);
+    textSize(10);
+    text("WORDS OUT OF 17",90,20);
+    
+    //each line complete
+    textAlign(CENTER);
+    textSize(40);
+    if (wordCount == 5){
+      status("LINE 1 WRITTEN");
+    } else if (wordCount == 12){
+      status("LINE 2 WRITTEN");
+    } else if (wordCount == 16){
+      status("LINE 3 WRITTEN");
+    }
+  }
+  /* ===== COUNT END ===== */
+  
+  
+  /* ===== STATUS START ===== */
+  void status(String _status){
+    status = _status;
+    fill(0,80);
+    rectMode(CENTER);
+    rect(width/2, height/2, width, 50);
+    
+    fill(255,162,249,200);
+    text(status, width/2, height/2 +10, width, 50);
+  }
+  /* ===== STATUS END ===== */
+
 }
