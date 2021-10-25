@@ -1,6 +1,13 @@
 # EECS 1710 Work
 
-## [Project 1: Creature](https://github.com/inarticulatetheory/EECS1710-michelle/tree/main/Project1_Creature)
+## [Midterm: One-Button Game](/Midterm_Project_Game)
+Create the terrible, sad, and angsty poetry of your teenage years! Generates a poem constructed by popping word balloons with a tear. Each balloon represents one of 4000 possible word choices. Collaborate with the randomness of the program by stringing together logical sentence patterns and waiting to see the terrible poetry you can write.
+![Home screen](./Midterm_Project_Game/assets/home_screen.png)
+![Home screen](./Midterm_Project_Game/assets/line1.png)
+![Final Poem](./Midterm_Project_Game/assets/final_poem.png)
+
+
+## [Project 1: Creature](/Project1_Creature)
 Fireflies trapped in a jar. Over time the fireflies begin to die, losing their glow and falling to the bottom of the jar.
 <br />
 <img src="./Project1_Creature/screenshots/fireflies_alive.png" width="400px">
