@@ -110,8 +110,6 @@ void setup() {
   //set up poetry
   poem = new Poem();
 }
-
-
 /* ===== SETUP END ===== */
 
 
@@ -207,18 +205,12 @@ void roundOver() {
   textSize(40);
   fill(240,180,240);
   text(finalPoem, width/2, height/2);
-  
-  /*
-  //start game when click happens
-  if (mousePressed) {
-      gameScreen = 1;
-    }
-    */
 }
 /* ===== ROUNDOVER END ===== */
 
 
 /* ===== HIT DETECTION START ===== */
+//used for tears hitting bubbles
 boolean tempHitDetection(PVector p1, PVector p2, PVector hitbox) {
   hitbox = hitbox.copy().div(2);
   if (p1.x >= p2.x - hitbox.x && p1.x <= p2.x + hitbox.x && p1.y >= p2.y - hitbox.y && p1.y <= p2.y + hitbox.y) {

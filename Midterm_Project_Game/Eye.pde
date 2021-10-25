@@ -45,7 +45,6 @@ class Eye {
   void run() {
     draw();
     admin();
-
   }
 /* ===== RUN EYE END ===== */
 
@@ -74,9 +73,6 @@ class Eye {
   
   /* ===== EYE DRAW START ===== */
   void draw() {
-    //pushMatrix(); 
-    //translate(position.x, position.y);
-    
     position.x = mouseX;
 
     ellipseMode(CENTER);
@@ -119,12 +115,6 @@ class Eye {
     //top eyelid
     fill(252,148,230);
     arc(position.x + 1, position.y-halfIris/3, irisSize*2.5 + 4, irisSize*1.5, radians(190), radians(360), CHORD);
-    
-    //eyelashes
-    fill(82, 52, 72);
-    //rect(position.x + 1, position.y-halfIris/3, irisSize*2.5 + 4, 3, 200);
-    
-    //popMatrix();
   }
   /* ===== EYE DRAW END ===== */
 }

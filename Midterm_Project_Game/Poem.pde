@@ -19,8 +19,14 @@ class Poem {
 
   Poem() {
     adjectiveCount = adjectives.length;
+    println("there are " + adjectiveCount + " adjectives in the word pool");
+    
     nounCount = nouns.length;
+    println("there are " + nounCount + " nouns in the word pool");
+
     verbCount = verbs.length;
+    println("there are " + verbCount + " verbs in the word pool");
+
 
   }
   
@@ -68,7 +74,6 @@ class Poem {
     finalL1 = join(lineOne, " ");
     finalL2 = join(lineTwo, " ");
     finalL3 = join(lineThree, " ");
-    println(finalL1 + " / " + finalL2 + " / " + finalL3);
     finalPoem = finalL1 + "\n" + finalL2 + "\n" +finalL3;
     gameScreen = 2; //end round
   }

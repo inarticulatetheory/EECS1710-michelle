@@ -226,7 +226,7 @@ class Bubbles {
   /* ===== BURST START ===== */
   void burst() {    
     //create popping visual effect
-    fill(255);
+    fill(bubbleColor);
     ellipse(position.x, position.y, w*1.5, w*1.5);
     
    poem.write(thisType);
@@ -258,9 +258,9 @@ class Bubbles {
         // Rotate the box
         rotate(theta+PI/2); // rotation is offset by 90 degrees
         // Display the character
-        fill(255,100);
-        textSize(8);
-        text(currentChar,position.x,position.y);
+        fill(255,150);
+        textSize(12);
+        text(currentChar,position.x,position.y); //was posX, posY
         popMatrix();
         // Move halfway again
         arclength += w/2;
