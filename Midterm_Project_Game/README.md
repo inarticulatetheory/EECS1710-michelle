@@ -28,6 +28,6 @@ https://processing.org/examples/circlecollision.html
 1. Characters on a curve adapted for the "constellations" from
 (http://learningprocessing.com/examples/chapter-17/example-17-8/)
 
-![Home screen](./Midterm_Project_Game/assets/home_screen.png)
-![Home screen](./Midterm_Project_Game/assets/line1.png)
-![Final Poem](./Midterm_Project_Game/assets/final_poem.png)
+![Home screen](./assets/home_screen.png)
+![Home screen](./assets/line1.png)
+![Final Poem](./assets/final_poem.png)
