@@ -1,4 +1,6 @@
 ## Midterm: One-Button Game
+> NOTE: the `assets` folder only contains screenshots of gameplay and is not part of the game
+
 Create the terrible, sad, and angsty poetry of your teenage years! Generates a poem constructed by popping word balloons with a tear. 
 
 Each balloon represents one of 4000 possible word choices. Collaborate with the randomness of the program by stringing together logical sentence patterns and waiting to see the terrible poetry you can write. 
