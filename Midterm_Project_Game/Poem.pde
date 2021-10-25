@@ -57,7 +57,9 @@ class Poem {
       }
       wordCount++; //increment wordCount no matter what array the word is put into
       poetryConstellation = poetryConstellation + tempWord;
-    } else {
+    }
+    //isn't an else if due to wordcount++ triggering this
+    if (wordCount == 17) {
       read(); //poem is ready to be diplayed
     }
   }
@@ -77,46 +79,52 @@ class Poem {
   void count(){
     //holder
     rectMode(CORNER);
-    fill(255,80);
-    rect(0,0,200,30);
+    fill(91,35,165,150);
+    rect(0,0,220,50);
     
     //text
     textAlign(LEFT);
-    textSize(10);
-    fill(80);
-    text("POEM IS",10,20);
-    
+    textFont(fJ);
+    textSize(20);
+    fill(240,180,240); //157, 11, 126);
+    text("POEM IS",10,20,60,30);
     textAlign(CENTER);
+    textFont(fA);
     textSize(40);
-    text(wordCount,70,30);
+    text(wordCount,80,40);
     
     textAlign(LEFT);
-    textSize(10);
-    text("WORDS OUT OF 17",90,20);
+    textFont(fJ);
+    textSize(20);
+    text("WORDS OUT OF 17",110,20,110,30);
     
     //each line complete
     textAlign(CENTER);
-    textSize(40);
+    textSize(50);
     if (wordCount == 5){
       status("LINE 1 WRITTEN");
     } else if (wordCount == 12){
       status("LINE 2 WRITTEN");
     } else if (wordCount == 16){
-      status("LINE 3 WRITTEN");
+      status("PICK YOUR LAST WORD");
     }
   }
   /* ===== COUNT END ===== */
   
   
   /* ===== STATUS START ===== */
+  //displays a message after each line is completed
   void status(String _status){
     status = _status;
-    fill(0,80);
+    fill(91,35,165,140);
     rectMode(CENTER);
     rect(width/2, height/2, width, 50);
     
-    fill(255,162,249,200);
+    textFont(fA);
+    fill(240,180,240,200);
     text(status, width/2, height/2 +10, width, 50);
+    
+    textFont(fJ); //without this the bubbles will set to the wrong font when the message displays
   }
   /* ===== STATUS END ===== */
 

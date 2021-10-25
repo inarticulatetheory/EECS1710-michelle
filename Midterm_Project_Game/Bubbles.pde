@@ -25,7 +25,7 @@ class Bubbles {
   Bubbles(float x, float y, float _w) {    
     position = new PVector(x, y); 
     velocity = PVector.random2D();
-    velocity.mult(0.3);
+    velocity.mult(2);
     w = _w;
     radius = w/2;
     m = radius * 0.1;
@@ -39,11 +39,11 @@ class Bubbles {
   
     //use for fill
     if (thisType == "noun"){
-      bubbleColor = color(229, 197, 197); //dusty pink
+      bubbleColor = color(121, 255, 167); //lime green
     } else if (thisType == "adjective") {
       bubbleColor = color(211, 197, 229); //soft purple
     } else if (thisType == "verb") {
-      bubbleColor = color(197, 204, 229); //periwinkle blue
+      bubbleColor = color(255, 242, 121); //pale yellow
     } 
   }
   /* ===== CONSTRUCTOR END ===== */
@@ -53,8 +53,7 @@ class Bubbles {
   void run() {
     admin();
     draw();
-    //move();
-    checkBoundaryCollision();
+    checkBoundaryCollision(); //keeps bubbles in canvas
   }
   /* ===== RUN BUBBLES END ===== */
   
@@ -81,18 +80,18 @@ class Bubbles {
   /* ===== DRAW BUBBLES START ===== */
   void draw() {    
     //draw bubble
-    fill(bubbleColor, 90); //apply 80 alpha
+    fill(bubbleColor, 120); //apply 80 alpha
     ellipseMode(CENTER);
     ellipse(position.x, position.y, w, w);
+        
+    //draw reflection
+    fill(255, 80);
+    quad(position.x - w/4, position.y, position.x - w/3, position.y, position.x - w/3, position.y - w/4, position.x - w/6, position.y - w/3);
     
-    //add text
+    //add text for word type
     fill(255);
     textSize(16);
-    text(thisType,position.x, position.y);
-    
-    //draw reflection
-    fill(255);
-    ellipse(position.x - w/5, position.y - w/4, w/5, w/4);
+    text(thisType.toUpperCase(),position.x, position.y + 5);
   }
   /* ===== DRAW BUBBLES END ===== */
 

@@ -46,7 +46,7 @@ class Tears {
     //if active and hits bottom (includes tide)
     if (active && (position.y + tear_width/2 > bottom)) {
       active = false;
-      tide = tide + 4; //add to puddle
+      tide = tide + 6; //add to puddle
     }
   }
   /* ===== TEAR ADMIN END ===== */

@@ -25,7 +25,9 @@
 
 /* ===== VARIABLES START =====*/
 PFont fA;
+PFont fAA;
 PFont fV;
+PFont fJ;
 
 //Variable to indicate active game screen
 int gameScreen = 0; //0 = initial screen, 1 = gameplay, 2 = game over
@@ -75,13 +77,16 @@ Poem poem;
 /* ===== SETUP START ===== */
 void setup() {
   size(1000, 700);
-  fA = loadFont("ASTORIA.vlw");
+  
+  //fonts
+  fA = loadFont("eightiesTeen.vlw");
+  fAA = loadFont("eightiesTeen80pt.vlw");
   fV = loadFont("VCR.vlw");
-  textFont(fV);
+  fJ = loadFont("JustAlice-Regular-48.vlw");
   
   //static text
   title = "SAD POETRY GENERATOR"; 
-  rules = "LIKE ALL TEENAGERS WHO CAME BEFORE YOU, YOU ARE SUFFERING FROM THE TRAGIC AND PROFOUND EXPERIENCE OF BEING. \n AND, LIKE ALL TEENAGERS WHO CAME BEFORE YOU, NO ONE UNDERSTANDS YOUR UNIQUE AND SPECIFIC EXPRESSION OF SELF. \n PUT THOSE TEARS TO PRODUCTIVE USE: BUILD YOUR SADDEST POEM BY POPPING WORDS. \n THEY'LL FINALLY UNDERSTAND YOU WHEN THEY READ YOUR FINAL CREATION";
+  rules = "Like all teenagers who came before you, no one understands you. \n No one has ever experienced your unique and individual expression of being. \n But everything's going to change when they read your terrible, sad poetry. \n \n Use your tears to burst open words, writing a sad poem that will make everyone understand you.";
   ready = "PRESS SPACE TO DROP A TEAR / CLICK ANYWHERE TO START";
   
   //dimensions
@@ -130,19 +135,27 @@ void draw() {
 /* ===== START INITIALSCREEN START ===== */
 void initialScreen() {
   //visuals
-  background(8,50,255);
+  background(91,35,165);
   
+  //title text
+  textFont(fAA);
   textAlign(CENTER);
-  fill(255);
-  textSize(50);
+  fill(240,180,240);
+  textSize(80);
   text(title, width/2, height/3);
   
+  //description text
+  textFont(fJ);
+  fill(240,180,240,200);
+
   textLeading(40);
-  textSize(15);
+  textSize(30);
   text(rules, width/2, height/2);
   
-  textSize(15);
-  text(ready, width/2, height - height/4);
+  //start game text
+  fill(240,180,240,255);
+  textSize(50);
+  text(ready, width/2, height - height/5);
 
 
   
@@ -166,13 +179,12 @@ void gamePlay() {
   //clean up any "popped" bubbles in the array
   for (int i=bubbles.size()-1; i>0; i--) {
     Bubbles b = bubbles.get(i);
-    bubbles.get(i-1).checkCollision(b);
       if (b.active) {
         b.run();
       } else {
         bubbles.remove(i);
       }
-    }
+    }  
   }
 /* ===== GAMEPLAY END ===== */
 
@@ -181,8 +193,18 @@ void gamePlay() {
 void roundOver() {
   //visuals
   background(91,35,165);
+  
+  //description text
+  textFont(fJ);
+  fill(240,180,240,200);
+  textLeading(40);
+  textSize(30);
+  text("Your sad poem is ready. \n They'll finally understand you now.", width/2, height/4);
+  
+  //poem
+  textFont(fA);
   textAlign(CENTER);
-  textSize(25);
+  textSize(40);
   fill(240,180,240);
   text(finalPoem, width/2, height/2);
   
