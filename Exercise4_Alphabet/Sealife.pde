@@ -33,9 +33,9 @@ class Sealife {
   }
 
   void display() {
-    stroke(0);
+    noStroke();
     fill(175);
-    ellipse(location.x,location.y,16,16);
+    ellipse(location.x,location.y,8,8);
   }
 
   void checkBoundaries() {
