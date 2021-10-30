@@ -9,6 +9,7 @@ class Timer {
   //start timer
   void start() {
     savedTime = millis();
+    ready = false;
   }
   
   boolean isFinished() {
