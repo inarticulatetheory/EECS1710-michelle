@@ -44,15 +44,18 @@ void draw() {
   
   //check timer before sending another sea creature
   if (timer.isFinished()) {
-    sealife[totalSealife] = new Sealife();
+    sealife[totalSealife] = new Sealife();    
     
-    totalSealife++; //increment to create next position in array on next timer end
-    
+    /* TRYING OUT MODULO
+    This is the same as
+      totalSealife++; //increment to create next position in array on next timer end
+      if (totalSealife >= sealife.length) {
+        totalSealife = 0;
+      }
+    */
     //if totalSealife hits end of array, start over
-    if (totalSealife >= sealife.length) {
-      totalSealife = 0;
-    }
-    
+    totalSealife = (totalSealife + 1) % sealife.length; 
+
     timer.start(); //restart timer at current time
     }
  
