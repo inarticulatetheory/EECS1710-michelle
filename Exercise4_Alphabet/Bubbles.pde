@@ -11,7 +11,7 @@ class Bubbles {
     xspeed = random(1);
     x = random(width); //random x start
     y = height + r*3; //start below window
-    bubbleAlpha = int(random(255));
+    bubbleAlpha = int(random(10,80));
   }
   
   void display() {

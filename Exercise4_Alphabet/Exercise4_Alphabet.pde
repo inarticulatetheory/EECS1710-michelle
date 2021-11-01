@@ -7,9 +7,13 @@
 
 Path path;
 ArrayList<Fish> fish;
-Timer timer;
+Timer bubbleTimer, backgroundTimer; //timer for different elements
 Bubbles[] bubbles;
+BackgroundLife[] backgroundlife;
+
 int totalBubbles = 0; //start at 0 to access first element in array
+int totalLife = 0; //start at 0 to access first element in array
+
 
 void setup() {
   size(800,600);
@@ -23,13 +27,16 @@ void setup() {
   }
   
   bubbles = new Bubbles[200];
-  timer = new Timer(5000);
-  timer.start();
+  backgroundlife = new BackgroundLife[40];
+  bubbleTimer = new Timer(500);
+  bubbleTimer.start();
+  backgroundTimer = new Timer(2000);
+  backgroundTimer.start();
 }
 
 void draw() {
-  background(20, 50, 124);
-
+  background(15, 28, 90);
+  
   for (Fish f : fish) {
     // Path following and separation are worked on in this function
     f.applyBehaviors(fish,path);
@@ -39,8 +46,8 @@ void draw() {
   
   
   //check timer for bubbles
-  if (timer.isFinished()) {
-    //Set new bubble on timer completion
+  if (bubbleTimer.isFinished()) {
+    //Set new bubble life on timer completion
     //initializing array with variable
     bubbles[totalBubbles] = new Bubbles();
   
@@ -52,13 +59,36 @@ void draw() {
       totalBubbles = 0;
     }
     
-    timer.start(); //restart timer at current time
+    bubbleTimer.start(); //restart timer at current time
+  } //timer end
+  
+    //check timer for background life
+  if (backgroundTimer.isFinished()) {
+    //Set new background life on timer completion
+    //initializing array with variable
+    backgroundlife[totalLife] = new BackgroundLife();
+  
+    //increment by one every time draw() is run
+    totalLife++;
+
+    //if totalLife hits end of array, start over
+    if (totalLife >= backgroundlife.length) {
+      totalLife = 0;
+    }
+    
+    backgroundTimer.start(); //restart timer at current time
   } //timer end
   
   //display and move bubbles
   for (int i=0; i<totalBubbles; i++) {
     bubbles[i].move();
     bubbles[i].display();
+  }
+  
+  //display and move background life
+  for (int i=0; i<totalLife; i++) {
+    backgroundlife[i].move();
+    backgroundlife[i].display();
   }
 }
 
@@ -86,4 +116,22 @@ void newFish(float x, float y) {
   float maxspeed = random(2,4);
   float maxforce = 0.3;
   fish.add(new Fish(new PVector(x,y),maxspeed,maxforce, color (255,random(160,255),10)));
+}
+
+void displayBackgroundLife() {
+  /*
+  //draw sand
+  noStroke();
+  fill(227, 208, 172, 210);
+  rectMode(CENTER);
+  rect(width/2, height-20, width, 40);
+  
+  //draw coral
+  fill(121, 152, 136);
+  ellipse(40, height-100, 40, 100);
+  ellipse(90, height-80, 40, 80);
+  ellipse(180, height-200, 40, 200);
+  ellipse(280, height-190, 40, 190);
+  */
+
 }
