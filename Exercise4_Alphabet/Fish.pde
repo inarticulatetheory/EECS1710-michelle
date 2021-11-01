@@ -3,9 +3,9 @@
 // http://natureofcode.com
 
 // Path Following
-// Vehicle class
-
-class Vehicle {
+// Vehicle class (renamed as Fish)
+ 
+class Fish {
 
   // All the usual stuff
   PVector position;
@@ -14,13 +14,15 @@ class Vehicle {
   float r;
   float maxforce;    // Maximum steering force
   float maxspeed;    // Maximum speed
+  color fishColor;
 
     // Constructor initialize all values
-  Vehicle( PVector l, float ms, float mf) {
+  Fish( PVector l, float ms, float mf, color col) {
     position = l.get();
     r = 4;
     maxspeed = ms;
     maxforce = mf;
+    fishColor = col;
     acceleration = new PVector(0, 0);
     //velocity = new PVector(maxspeed, 0);
     float angle = random(TWO_PI);
@@ -28,11 +30,11 @@ class Vehicle {
   }
 
   // A function to deal with path following and separation
-  void applyBehaviors(ArrayList vehicles, Path path) {
+  void applyBehaviors(ArrayList fish, Path path) {
     // Follow path force
     PVector f = follow(path);
     // Separate from other boids force
-    PVector s = separate(vehicles);
+    PVector s = separate(fish);
     // Arbitrary weighting
     f.mult(3);
     s.mult(1);
@@ -112,25 +114,6 @@ class Vehicle {
       }
     }
 
-    // Draw the debugging stuff
-    if (debug) {
-      // Draw predicted future position
-      stroke(0);
-      fill(0);
-      line(position.x, position.y, predictpos.x, predictpos.y);
-      ellipse(predictpos.x, predictpos.y, 4, 4);
-
-      // Draw normal position
-      stroke(0);
-      fill(0);
-      ellipse(normal.x, normal.y, 4, 4);
-      // Draw actual target (red if steering towards it)
-      line(predictpos.x, predictpos.y, target.x, target.y);
-      if (worldRecord > p.radius) fill(255, 0, 0);
-      noStroke();
-      ellipse(target.x, target.y, 8, 8);
-    }
-
     // Only if the distance is greater than the path's radius do we bother to steer
     if (worldRecord > p.radius) {
       return seek(target);
@@ -163,7 +146,7 @@ class Vehicle {
     int count = 0;
     // For every boid in the system, check if it's too close
     for (int i = 0 ; i < boids.size(); i++) {
-      Vehicle other = (Vehicle) boids.get(i);
+      Fish other = (Fish) boids.get(i);
       float d = PVector.dist(position, other.position);
       // If the distance is greater than 0 and less than an arbitrary amount (0 when you are yourself)
       if ((d > 0) && (d < desiredseparation)) {
@@ -223,7 +206,7 @@ class Vehicle {
     //rotate in the direction of velocity
     float theta = velocity.heading2D() + radians(90);
     
-    fill(90, 100);
+    fill(fishColor, 80);
     noStroke();
     pushMatrix();
     translate(position.x, position.y);
