@@ -1,5 +1,12 @@
 # EECS 1710 Work
 
+## [Exercise 4: Alphabet](/Exercise4_Alphabet)
+Adapted Jordan Schiffman's [Crowd Pathing Example](https://github.com/nature-of-code/noc-examples-processing/tree/master/chp06_agents/Exercise_6_13_CrowdPathFollowing) from _The Nature of Code_ to build a swimming school of fish following the path of an alphabet letter. To add to the environment, other fish float by in the background, and bubbles rise. Within the time available, only completed "A" as a hard-coded letter, but would expand to include a `Letters` class with more time.
+![Fish forming letter](./Exercise4_Alphabet/assets/fish_forming_letter.png)
+![Fish following path](./Exercise4_Alphabet/assets/fish_following_path.png)
+
+
+
 ## [Midterm: One-Button Game](/Midterm_Project_Game)
 Create the terrible, sad, and angsty poetry of your teenage years! Generates a poem constructed by popping word balloons with a tear. Each balloon represents one of 4000 possible word choices. Collaborate with the randomness of the program by stringing together logical sentence patterns and waiting to see the terrible poetry you can write. As words are added to the poem, they appear in the background as "constellations," adding to the absurd dream-like world of the game.
 ![Home screen](./Midterm_Project_Game/assets/home_screen.png)
