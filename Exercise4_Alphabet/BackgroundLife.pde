@@ -6,7 +6,7 @@ class BackgroundLife {
   int lifeAlpha;
   
   BackgroundLife() {
-    r = random(20,50);
+    r = random(6,20);
     yspeed = random(2);
     xspeed = random(5);
     x = -r*3; //random x start
@@ -16,10 +16,10 @@ class BackgroundLife {
   
   void display() {
     noStroke();
-    fill(0);
+    fill(0,80);
     //fill(25, 40, 64, lifeAlpha);
     ellipse(x, y, r*4, r*2);
-    triangle(x-r*1.5, y, x-r*4, y+r/2, x-r*4, y-r/2);
+    triangle(x-r*1.5, y, x-r*3, y+r, x-r*3, y-r);
     
     //ellipse(x, y, r, r);
   }

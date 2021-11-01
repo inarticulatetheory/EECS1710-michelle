@@ -14,6 +14,10 @@ BackgroundLife[] backgroundlife;
 int totalBubbles = 0; //start at 0 to access first element in array
 int totalLife = 0; //start at 0 to access first element in array
 
+//variables for background gradient
+color c1 = color(15, 28, 90);
+color c2 = color(0); //color(67, 40, 41);
+
 
 void setup() {
   size(800,600);
@@ -36,6 +40,9 @@ void setup() {
 
 void draw() {
   background(15, 28, 90);
+  
+  //DRAW GRADIENT
+  setGradient(0, 0, width, height, c1, c2);
   
   for (Fish f : fish) {
     // Path following and separation are worked on in this function
@@ -118,20 +125,14 @@ void newFish(float x, float y) {
   fish.add(new Fish(new PVector(x,y),maxspeed,maxforce, color (255,random(160,255),10)));
 }
 
-void displayBackgroundLife() {
-  /*
-  //draw sand
-  noStroke();
-  fill(227, 208, 172, 210);
-  rectMode(CENTER);
-  rect(width/2, height-20, width, 40);
+/* Set Gradient code sourced from https://processing.org/examples/lineargradient.html */
+void setGradient(int x, int y, float w, float h, color c1, color c2) {
+  noFill();
   
-  //draw coral
-  fill(121, 152, 136);
-  ellipse(40, height-100, 40, 100);
-  ellipse(90, height-80, 40, 80);
-  ellipse(180, height-200, 40, 200);
-  ellipse(280, height-190, 40, 190);
-  */
-
+  for (int i = y; i <= y+h; i++) {
+    float inter = map(i, y, y+h, 0, 1);
+    color c = lerpColor(c1, c2, inter);
+    stroke(c);
+    line(x, i, x+w, i);
+  }
 }
