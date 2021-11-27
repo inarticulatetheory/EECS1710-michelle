@@ -1,63 +1,73 @@
+//CROSS STITCH
+
 /* CODE CITED:
 - Working with pixels tutorial from https://processing.org/tutorials/pixels
 
 */
 
-PImage imageIn, imageOut;
-float rows;
-float j; //random
+PImage imageIn;
+int grid = 5;
+int pointillize = 16;
 
 void setup() {
   size(600, 600);
   imageIn = loadImage("monalisa.jpg");  
+  imageIn.resize(width, height); //stretch image to canvas
   
-  //create blank image same size as imageIn
-  imageOut = createImage(imageIn.width, imageIn.height, RGB);
+
+  /* START setup the "fabric" grid */
+  stroke(180);
+  for (int i=0; i<width; i+=grid) {
+    for (int j=0; j<height; j+=grid) {
+      line(i,0,i,height);
+      line(0,j,width,j);
+    }
+  }
+  /* END setup the fabric grid */
   
-  //imageOut = imageIn.get();
-  //imageOut.loadPixels(); //load the pixels, I would like to speak with them!
+  /* START EMBROIDERY HOOP*/
+  //main hoop
+  stroke(211, 184, 130);
+  strokeWeight(15);
+  noFill();
+  ellipse(width/2, height/2, width-20, height-20);
   
-  j = random(1,10); //has to be greater than zero
+  //hoop accent
+  stroke(234, 207, 152);
+  strokeWeight(2);
+  noFill();
+  ellipse(width/2, height/2, width-15, height-15);
+  ellipse(width/2, height/2, width-25, height-25);
+  
+  //hoop shadow
+  stroke(118, 101, 67);
+  strokeWeight(2);
+  noFill();
+  ellipse(width/2, height/2, width-32, height-32);
+  /*END EMBROIDERY HOOP*/
 }
 
-void draw() {
-  float threshold = 190;
-  
-  //load both image's pixels
-  imageIn.loadPixels();
-  imageOut.loadPixels();
-  
-  /* map takes one set of values and sets an equivalent in another set */
-  //rows = map(mouseX, 0, width, 0, 255); //map colour scale (0-255) to 0-width
-  
-  /*
-  for (int i=0; i<imageOut.pixels.length; i++) {
-    if (i % j == 0) { //do something to every 5th pixel
-      color c = color(random(255));
-      imageOut.pixels[i] = c;
-    }
-  }
-  */
-  
-  //loop through every pixel column
-  for (int x=0; x<imageIn.width; x++) {
-    //then loop through every pixel row
-    for (int y=0; y<imageIn.height; y++) {
-      //get actual pixel location
-      int loc = x + y * imageIn.width;
-      
-      //test brightness against threshold
-      if (brightness(imageIn.pixels[loc]) > threshold) {
-        imageOut.pixels[loc] = color(255);
-      } else {
-        imageOut.pixels[loc] = color(0);
-      }
-    }
-  }
-  
-  
-  imageOut.updatePixels(); //Go ahead and update the pixels, I'm all done!
-  
-  image(imageOut, 0, 0, width, height);
+void draw() {  
 
+
+  
+  /* pointilism effect */
+
+  //pick random point
+  int x = int(random(imageIn.width));
+  int y = int(random(imageIn.height));
+  int loc = x + y * imageIn.width;
+  
+  //load up RGB color in source image
+  imageIn.loadPixels();
+  float r = red(imageIn.pixels[loc]);
+  float g = green(imageIn.pixels[loc]);
+  float b = blue(imageIn.pixels[loc]);
+
+  //noStroke();
+  stroke(r, g, b, 200);
+  //fill(r, g, b, 100);
+  //instead of setting a pixel, draw an X with the colour
+  line(x,y,x+grid,y-grid);
+  line(x, y-grid, x+grid, y);
 }
