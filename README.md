@@ -1,5 +1,10 @@
 # EECS 1710 Work
 
+## [Project 3: Custom Pixel](/Project3_CustomPixel)
+Adapted the [Pointilism Example from _Learning Processing_](http://learningprocessing.com/examples/chp15/example-15-14-Pointillism) to create a cross-stitch custom pixel. Customizations include the stitch concept and shape, adding a z-value for the stitches, and creating an embroidery hoop with a circular boundary to contain the stitches. With more time would also add a sewing needle, perhaps even making it interactive.
+![Fish forming letter](./Project3_CustomPixel/assets/project3_1.png)
+![Fish following path](./Project3_CustomPixel/assets/project3_2.png)
+
 ## [Exercise 4: Alphabet](/Exercise4_Alphabet)
 Adapted Jordan Schiffman's [Crowd Pathing Example](https://github.com/nature-of-code/noc-examples-processing/tree/master/chp06_agents/Exercise_6_13_CrowdPathFollowing) from _The Nature of Code_ to build a swimming school of fish following the path of an alphabet letter. To add to the environment, other fish float by in the background, and bubbles rise. Within the time available, only completed "A" as a hard-coded letter, but would expand to include a `Letters` class with more time.
 ![Fish forming letter](./Exercise4_Alphabet/assets/fish_forming_letter.png)
