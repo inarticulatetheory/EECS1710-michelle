@@ -12,10 +12,13 @@ import processing.sound.*;
 
 void setup() {
   size(640, 360);
-  background(255);
   setupWaves();
+  setupWaveform();
 }
 
 void draw() {
+    background(150);
+
   updateWaves();
+  updateWaveform();
 }
