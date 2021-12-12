@@ -31,7 +31,7 @@ void setupFaceDetection() {
 
 void updateFaceDetection() {
   scale(2); //scale video capture back up
-  //image(video, 0, 0); //display video to screen
+  image(video, 0, 0); //display video to screen
   
   //face
   getface.loadImage(video);
@@ -60,7 +60,8 @@ void updateFaceDetection() {
     //placeholder to QA the detection if needed
     stroke(255, 255, 0);
     strokeWeight(2);
-    rect(detections[0].x, detections[0].y, detections[0].width, detections[0].height);
+    translate(0, 0, 0);
+    rect(faceDetections[0].x, faceDetections[0].y, faceDetections[0].width, faceDetections[0].height);
     */
   }
   

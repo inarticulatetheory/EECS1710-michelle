@@ -10,20 +10,19 @@
 3 - Face Detection adapted from Processing Examples > OpenCV > FaceDetection
 */
 
-
 import processing.sound.*;
 
 void setup() {
-  size(640, 360);
+  size(640, 360, P3D);
+  frameRate(60);
+  
   setupWaves();
-  setupWaveform();
+  //setupWaveform();
   setupFaceDetection();
 }
 
 void draw() {
   background(7, 12, 21);
-
-  //updateWaves();
-  updateWaveform();
+  //updateWaveform();
   updateFaceDetection();
 }
