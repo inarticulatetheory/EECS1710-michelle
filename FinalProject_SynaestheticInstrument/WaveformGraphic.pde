@@ -1,5 +1,5 @@
 /**
- * CODE CITED: Processing Examples > Sound > 
+ * CODE CITED: Processing Examples > Sound > Waveform
  * This sketch shows how to use the Waveform class to analyze a stream
  * of sound. Change the number of samples to extract and draw a longer/shorter
  * part of the waveform.

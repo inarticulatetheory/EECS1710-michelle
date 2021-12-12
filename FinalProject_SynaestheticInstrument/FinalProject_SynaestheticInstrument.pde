@@ -3,8 +3,11 @@
 //placement on screen is reverb or something
 
 /* CODE CITED
+"adapted" code used as a starting point and developed off of
 1 - Base sound functionality adapted from Processing Sound Library, Example 1
     https://processing.org/tutorials/sound
+2 - Waveform graphic adapted from Processing Examples > Sound > Waveform
+3 - Face Detection adapted from Processing Examples > OpenCV > FaceDetection
 */
 
 
@@ -14,6 +17,7 @@ void setup() {
   size(640, 360);
   setupWaves();
   setupWaveform();
+  setupFaceDetection();
 }
 
 void draw() {
@@ -21,4 +25,5 @@ void draw() {
 
   updateWaves();
   updateWaveform();
+  updateFaceDetection();
 }
