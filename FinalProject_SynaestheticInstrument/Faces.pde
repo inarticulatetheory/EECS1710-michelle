@@ -4,18 +4,19 @@ class Faces {
   float w;
   float h;
 
-  Faces(float x_, float y_, float w_, float h_) {
-    x = x_;
-    y = y_;
+  Faces(float cornerx_, float cornery_, float w_, float h_) {
+    //OpenCV will pass detection points as corners
+    x = (cornerx_ + (w/2)); //shift x to middle
+    y = (cornery_ + (h/2)); //shift y to middle
     w = w_;
-  
+    h = h_;
   }
   
   void display() {
     fill(210,100);
     noStroke();
-    ellipseMode(CORNER);
-    ellipse(x, y, w-10, h);
+    ellipseMode(CENTER);
+    ellipse(x+w/2, y+h/2, w*0.75, h);
   }
 
 }

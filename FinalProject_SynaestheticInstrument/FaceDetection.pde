@@ -45,14 +45,14 @@ void updateFaceDetection() {
     
     //create a face for this detection
     face = new Faces[detections.length];
-    face[i] = new Faces(detections[0].x, detections[0].y, detections[0].width, detections[0].height);
+    face[i] = new Faces(detections[i].x, detections[i].y, detections[i].width, detections[i].height);
     face[i].display();
 
-    //placeholder for the detection
+    /*
+    //placeholder to QA the detection if needed
     stroke(255, 255, 0);
     strokeWeight(2);
-    ellipseMode(CORNER);
-    ellipse(detections[0].x, detections[0].y, detections[0].width, detections[0].height);
-    point(detections[0].x, detections[0].y);
+    rect(detections[0].x, detections[0].y, detections[0].width, detections[0].height);
+    */
   }
 }
