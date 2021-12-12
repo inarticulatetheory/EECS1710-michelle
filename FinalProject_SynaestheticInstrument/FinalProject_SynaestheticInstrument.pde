@@ -21,7 +21,7 @@ void setup() {
 }
 
 void draw() {
-    background(150);
+    background(10, 18, 54);
 
   updateWaves();
   updateWaveform();

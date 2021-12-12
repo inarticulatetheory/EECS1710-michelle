@@ -13,10 +13,10 @@ class Faces {
   }
   
   void display() {
-    fill(210,100);
+    fill(255, 253, 201, 100);
     noStroke();
     ellipseMode(CENTER);
-    ellipse(x+w/2, y+h/2, w*0.75, h);
+    ellipse(x + (w/2), y + (h/2), w*0.75, h*0.75);
   }
 
 }

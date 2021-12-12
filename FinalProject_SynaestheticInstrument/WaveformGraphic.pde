@@ -26,7 +26,7 @@ void updateWaveform() {
   // Perform the analysis
   waveform.analyze();
   
-  stroke(255, 130);
+  stroke(250, 249, 220, 130);
   strokeWeight(2);
   noFill();
   beginShape();
