@@ -10,7 +10,7 @@ Capture video;
 OpenCV getface, geteyes;
 
 Rectangle[] faceDetections, eyeDetections;
-Faces[] face;
+Faces face;
 Eyes[] eye;
 
 
@@ -31,30 +31,31 @@ void setupFaceDetection() {
 
 void updateFaceDetection() {
   scale(2); //scale video capture back up
+  
+  //BUG: OpenCV will not work in 3D without image displaying
+  tint(0, 200); //make image transparent--comment to debug with video image
   image(video, 0, 0); //display video to screen
   
-  //face
-  getface.loadImage(video);
-  faceDetections = getface.detect();
   
-  //eyes
+  //load video
+  getface.loadImage(video);
   geteyes.loadImage(video);
+
+  noFill(); //CHANGE
+
+  //find facial features
+  faceDetections = getface.detect();
   eyeDetections = geteyes.detect();
   
   /* 
   * FACES
-  *
-  * THIS IS ACTING ON THE FIRST (0th) OBJECT DETECTION ONLY
-  * if you had more than one
-  * change faces[0] to faces[i]
   */
-  for (int i = 0; i < faceDetections.length; i++) {
-    
-    //create a face for this detection
-    face = new Faces[faceDetections.length];
-    face[i] = new Faces(faceDetections[i].x, faceDetections[i].y, faceDetections[i].width, faceDetections[i].height);
-    face[i].display();
-    face[i].update();
+  if (faceDetections.length > 0) {
+    //create a face for just the first detection so there's always only one face
+    //could be interesting to have multiple though, in case friends play together
+    face = new Faces(faceDetections[0].x, faceDetections[0].y, faceDetections[0].width, faceDetections[0].height);
+    face.display();
+    face.update();
 
     /*
     //placeholder to QA the detection if needed
