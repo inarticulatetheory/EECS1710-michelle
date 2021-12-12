@@ -18,5 +18,10 @@ class Faces {
     ellipseMode(CENTER);
     ellipse(x + (w/2), y + (h/2), w*0.75, h*0.75);
   }
+  
+  void update() {
+    //update the sound waves with current location
+    updateWaves(x + (w/2), y + (h/2), w, h);
+  }
 
 }

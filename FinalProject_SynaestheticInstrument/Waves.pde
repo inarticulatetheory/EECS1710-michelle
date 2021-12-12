@@ -28,13 +28,19 @@ void setupWaves() {
   }
 }
 
-void updateWaves() {
-  //Map mouseY from 0 to 1
-  float yoffset = map(mouseY, 0, height, 0, 1);
-  //Map mouseY logarithmically to 150 - 1150 to create a base frequency range
+void updateWaves(float x_, float y_, float w_, float h_) {
+  float x = x_;
+  float y = y_;
+  float w = w_;
+  float h = h_;
+
+  
+  //Map y from 0 to 1
+  float yoffset = map(y, 0+h, height-h, 0, 1);
+  //Map y logarithmically to 150 - 1150 to create a base frequency range
   float frequency = pow(1000, yoffset) + 150;
-  //Use mouseX mapped from -0.5 to 0.5 as a detune argument
-  float detune = map(mouseX, 0, width, -0.5, 0.5);
+  //Use width of face mapped from -0.5 to 0.5 as a detune argument
+  float detune = map(w, 0, height, -0.5, 0.5);
 
   for (int i = 0; i < numSines; i++) {
     sineFreq[i] = frequency * (i + 1 * detune);

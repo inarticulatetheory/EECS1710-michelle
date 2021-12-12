@@ -28,12 +28,7 @@ void setupFaceDetection() {
 void updateFaceDetection() {
   scale(2); //scale video capture back up
   opencv.loadImage(video);
-  image(video, 0, 0); //display video to screen
-  //image(opencv.getInput(), 0, 0);
-
-  noFill();
-  //stroke(0, 255, 0);
-  //strokeWeight(2);
+  //image(video, 0, 0); //display video to screen
   detections = opencv.detect();
   
   /* 
@@ -47,6 +42,7 @@ void updateFaceDetection() {
     face = new Faces[detections.length];
     face[i] = new Faces(detections[i].x, detections[i].y, detections[i].width, detections[i].height);
     face[i].display();
+    face[i].update();
 
     /*
     //placeholder to QA the detection if needed

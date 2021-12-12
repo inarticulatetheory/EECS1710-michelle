@@ -21,9 +21,9 @@ void setup() {
 }
 
 void draw() {
-    background(10, 18, 54);
+  background(7, 12, 21);
 
-  updateWaves();
+  //updateWaves();
   updateWaveform();
   updateFaceDetection();
 }
