@@ -4,7 +4,7 @@ class Faces {
   float w;
   float h;
   float z;
-  PImage moonTexture; //used to set texture on face
+  PImage moonTexture; //used to set texture on face; from http://planetpixelemporium.com/
   PShape face;
 
   Faces(float cornerx_, float cornery_, float w_, float h_) {
@@ -16,7 +16,7 @@ class Faces {
     z = 0;
     
     //sphere setup
-    moonTexture = loadImage("moon.jpg");
+    moonTexture = loadImage("moonmap4k.jpg");
     noStroke();
     sphereDetail(40);
     face = createShape(SPHERE, w/2);

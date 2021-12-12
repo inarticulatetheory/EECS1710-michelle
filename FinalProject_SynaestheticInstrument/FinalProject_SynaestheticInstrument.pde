@@ -8,6 +8,7 @@
     https://processing.org/tutorials/sound
 2 - Waveform graphic adapted from Processing Examples > Sound > Waveform
 3 - Face Detection adapted from Processing Examples > OpenCV > FaceDetection
+4 - Moon texture from http://planetpixelemporium.com/
 */
 
 import processing.sound.*;
