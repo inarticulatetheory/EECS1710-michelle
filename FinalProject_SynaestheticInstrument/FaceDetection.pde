@@ -9,7 +9,7 @@ import processing.video.*;
 Capture video;
 OpenCV opencv;
 
-Rectangle[] faces;
+Rectangle[] detections;
 Faces[] face;
 
 
@@ -34,18 +34,25 @@ void updateFaceDetection() {
   noFill();
   //stroke(0, 255, 0);
   //strokeWeight(2);
-  faces = opencv.detect();
+  detections = opencv.detect();
   
   /* 
   * THIS IS ACTING ON THE FIRST (0th) OBJECT DETECTION ONLY
   * if you had more than one
   * change faces[0] to faces[i]
   */
-  for (int i = 0; i < faces.length; i++) {
+  for (int i = 0; i < detections.length; i++) {
+    
+    //create a face for this detection
+    face = new Faces[detections.length];
+    face[i] = new Faces(detections[0].x, detections[0].y, detections[0].width, detections[0].height);
+    face[i].display();
+
+    //placeholder for the detection
     stroke(255, 255, 0);
     strokeWeight(2);
     ellipseMode(CORNER);
-    ellipse(faces[0].x, faces[0].y, faces[0].width, faces[0].height);
-    point(faces[0].x, faces[0].y);
+    ellipse(detections[0].x, detections[0].y, detections[0].width, detections[0].height);
+    point(detections[0].x, detections[0].y);
   }
 }
