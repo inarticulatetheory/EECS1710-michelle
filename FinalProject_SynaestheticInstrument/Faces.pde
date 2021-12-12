@@ -15,34 +15,16 @@ class Faces {
     h = h_;
     z = 0;
     
-    /*
     fur = loadImage("fur.jpg");
     face = createShape(SPHERE, w/2);
     face.setTexture(fur);
     noStroke();    
     lights();
-    */
-
   }
   
   void display() {
-    /*
-    println("i am a face display");
     translate(x + (w/2), y + (h/2), 0);
     shape(face);
-    */
-
-    /*
-    fill(255, 253, 201, 100);
-    ellipseMode(CENTER);
-    ellipse(0, 0, w*0.75, h*0.75);
-    */
-    
-        fill(255, 253, 201, 100);
-    noStroke();
-    ellipseMode(CENTER);
-    ellipse(x + (w/2), y + (h/2), w*0.75, h*0.75);
-    
   }
   
   
