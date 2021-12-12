@@ -7,10 +7,11 @@ import java.awt.Rectangle;
 import processing.video.*;
 
 Capture video;
-OpenCV opencv;
+OpenCV getface, geteyes;
 
-Rectangle[] detections;
+Rectangle[] faceDetections, eyeDetections;
 Faces[] face;
+Eyes[] eye;
 
 
 void captureEvent(Capture video) {
@@ -21,26 +22,37 @@ void setupFaceDetection() {
   video = new Capture(this, width/2, height/2); //reduce capture size for speed
   video.start();
   
-  opencv = new OpenCV(this, width/2, height/2); //reduce capture size for speed
-  opencv.loadCascade(OpenCV.CASCADE_FRONTALFACE);  
+  getface = new OpenCV(this, width/2, height/2); //reduce capture size for speed
+  getface.loadCascade(OpenCV.CASCADE_FRONTALFACE);  
+  
+  geteyes = new OpenCV(this, width/2, height/2); //reduce capture size for speed
+  geteyes.loadCascade(OpenCV.CASCADE_EYE);  
 }
 
 void updateFaceDetection() {
   scale(2); //scale video capture back up
-  opencv.loadImage(video);
   //image(video, 0, 0); //display video to screen
-  detections = opencv.detect();
+  
+  //face
+  getface.loadImage(video);
+  faceDetections = getface.detect();
+  
+  //eyes
+  geteyes.loadImage(video);
+  eyeDetections = geteyes.detect();
   
   /* 
+  * FACES
+  *
   * THIS IS ACTING ON THE FIRST (0th) OBJECT DETECTION ONLY
   * if you had more than one
   * change faces[0] to faces[i]
   */
-  for (int i = 0; i < detections.length; i++) {
+  for (int i = 0; i < faceDetections.length; i++) {
     
     //create a face for this detection
-    face = new Faces[detections.length];
-    face[i] = new Faces(detections[i].x, detections[i].y, detections[i].width, detections[i].height);
+    face = new Faces[faceDetections.length];
+    face[i] = new Faces(faceDetections[i].x, faceDetections[i].y, faceDetections[i].width, faceDetections[i].height);
     face[i].display();
     face[i].update();
 
@@ -50,5 +62,21 @@ void updateFaceDetection() {
     strokeWeight(2);
     rect(detections[0].x, detections[0].y, detections[0].width, detections[0].height);
     */
+  }
+  
+  /* EYES */
+    for (int i = 0; i < eyeDetections.length; i++) {
+      //create a eye for this detection
+      eye = new Eyes[eyeDetections.length];
+      eye[i] = new Eyes(eyeDetections[i].x, eyeDetections[i].y, eyeDetections[i].width, eyeDetections[i].height);
+      eye[i].display();
+      //eye[i].update();
+
+      /*
+      //placeholder to QA the detection if needed
+      stroke(255, 255, 0);
+      strokeWeight(2);
+      rect(eyeDetections[0].x, eyeDetections[0].y, eyeDetections[0].width, eyeDetections[0].height);
+      */
   }
 }
