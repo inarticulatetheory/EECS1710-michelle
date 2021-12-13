@@ -29,6 +29,7 @@ void updateNotes() {
 // If the determined trigger moment in time matches up with the computer clock and
   // the sequence of notes hasn't been finished yet, the next note gets played.
   if ((millis() > trigger) && (note<midiSequence.length)) {
+    //println("triggered note!");
 
     // midiToFreq transforms the MIDI value into a frequency in Hz which we use to
     // control the triangle oscillator with an amplitute of 0.5
@@ -38,9 +39,9 @@ void updateNotes() {
     // levels we defined earlier
     env.play(osc, attackTime, sustainTime, sustainLevel, releaseTime);
 
-    // Create the new trigger according to predefined duration
+    // Reset the trigger
     trigger = millis() + duration;
-
+    
     // Advance by one note in the midiSequence;
     note++; 
 

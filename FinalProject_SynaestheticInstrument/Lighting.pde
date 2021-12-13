@@ -1,23 +1,9 @@
-float theta;
-float orbitSpeed;
-  
-void setupOrbitingLight() {
+ void setupLight() {
   float x = -1;
   float y = 0;
   float z = 0;
-  theta = 0;
-  orbitSpeed = random(0.01, 0.03);
-  
-  pushMatrix();
-    //rotate orbit
-    rotate(theta);
-    directionalLight(253, 255, 206, x, y, z);
-    //increment angle to rotate
-    theta += orbitSpeed;
-  popMatrix();
-}
-
-void updateOrbitingLight() {
-  //increment angle to rotate
-  theta += orbitSpeed;
-}
+  directionalLight(253, 255, 206, -5, height/2, -100);
+ // Orange point light on the right
+  pointLight(150, 100, 0, // Color
+             200, -150, -100); // Position
+           }

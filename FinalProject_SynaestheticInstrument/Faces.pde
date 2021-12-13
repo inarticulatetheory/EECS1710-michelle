@@ -21,9 +21,6 @@ class Faces {
     sphereDetail(40);
     face = createShape(SPHERE, w/2);
     face.setTexture(moonTexture);
-    //noStroke();    
-    //lights();
-    //updateOrbitingLight(); CHANGE
  
   }
   

@@ -29,9 +29,7 @@ void setup() {
   setupNoise();
   setupNotes();
   setupWaveform();
-  setupFaceDetection();
-  setupOrbitingLight(); //updated in Faces
-  
+  setupFaceDetection();  
   // Call a function to generate new Path object
   newPath();
   // Then making random "vehicles" (here, celestialBodies) and store them in an ArrayList
@@ -40,6 +38,9 @@ void setup() {
     pushMatrix();
       translate(0, 0, 0);
       newCelestialBody(random(width),random(height),random(200));
+      
+      //trigger a new note sequence
+      //trigger = true; WENT BACK ON THIS
     popMatrix();
   }
   
@@ -59,8 +60,8 @@ void draw() {
   
   updateNotes();
   updateWaveform();
+  setupLight();
   updateFaceDetection();
-  updateOrbitingLight();
 
   for (CelestialBodies cb : celestialBodies) {
     // Path following and separation are worked on in this function
@@ -90,6 +91,4 @@ void newCelestialBody(float x, float y, float z) {
   float maxspeed = random(2,4);
   float maxforce = 0.3;
   celestialBodies.add(new CelestialBodies(new PVector(x,y,z),maxspeed,maxforce));
-      println("celestial body created at ", x, "/", y, "/", z);
-
 }

@@ -26,8 +26,8 @@ void updateWaveform() {
   
   // Perform the analysis
   waveform.analyze();
-  stroke(250, 249, 220, 130);
-  strokeWeight(2);
+  stroke(150, 100, 0, 30);
+  strokeWeight(40);
   noFill();
   beginShape();
   for(int i = 0; i < samples; i++){
@@ -40,6 +40,18 @@ void updateWaveform() {
     path.addPoint(x,y);
   }
   endShape();
-
-
+  
+  //once more but with a smaller line
+  stroke(250, 249, 220);
+  strokeWeight(1);
+  noFill();
+  beginShape();
+  for(int i = 0; i < samples; i++){
+    // Draw current data of the waveform
+    // Each sample in the data array is between -1 and +1 
+    float x = map(i, 0, samples, 0, width);
+    float y = map(waveform.data[i], -1, 1, 0, height);
+    vertex(x,y);
+  }
+  endShape();
 }

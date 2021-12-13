@@ -28,7 +28,7 @@ void updateFaceDetection() {
   scale(2); //scale video capture back up
   
   //BUG: OpenCV will not work in 3D without image displaying
-  tint(0, 200); //make image transparent--comment to debug with video image
+  tint(0, 255); //make image transparent--comment to debug with video image
   image(video, 0, 0); //display video to screen
   
   
