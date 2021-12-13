@@ -1,5 +1,12 @@
 # EECS 1710 Work
 
+## [Final Project: Synesthetic Instrument](/FinalProject_SynaestheticInstrument)
+An instrument that manipulates a sine wave cluster through a moon avatar controlled by your face. As you move your face, the moon will match your movement, applying effects to the underlying sound based on the horizontal, vertical, or depth movement of the moon. A waveform will graphically output as you create sound, while stars, comets, and space junk serve as your distant audience.
+
+!["Rings" flat during silence](./FinalProject_SynaestheticInstrument/assets/instrument1.png)
+!["Rings" moving with sound](./FinalProject_SynaestheticInstrument/assets/instrument2.png)
+
+
 ## [Project 3: Custom Pixel](/Project3_CustomPixel)
 Adapted the [Pointilism Example from _Learning Processing_](http://learningprocessing.com/examples/chp15/example-15-14-Pointillism) to create a cross-stitch custom pixel. Customizations include the stitch concept and shape, adding a z-value for the stitches, and creating an embroidery hoop with a circular boundary to contain the stitches. With more time would also add a sewing needle, perhaps even making it interactive.
 
