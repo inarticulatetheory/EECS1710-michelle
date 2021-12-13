@@ -1,6 +1,7 @@
 # EECS 1710 Work
 
-## [Final Project: Synesthetic Instrument](/FinalProject_SynaestheticInstrument)
+## [Final Project: Synesthetic Instrument](/FinalProject_SynaestheticInstrument) 
+### [Demo Video](https://vimeo.com/manage/videos/656281402)
 An instrument that manipulates a sine wave cluster through a moon avatar controlled by your face. As you move your face, the moon will match your movement, applying effects to the underlying sound based on the horizontal, vertical, or depth movement of the moon. A waveform will graphically output as you create sound, while stars, comets, and space junk serve as your distant audience.
 
 !["Rings" flat during silence](./FinalProject_SynaestheticInstrument/assets/instrument1.png)
@@ -21,6 +22,7 @@ Adapted Jordan Schiffman's [Crowd Pathing Example](https://github.com/nature-of-
 
 
 ## [Midterm: One-Button Game](/Midterm_Project_Game)
+### [Demo Video](https://vimeo.com/manage/videos/638781106)
 Create the terrible, sad, and angsty poetry of your teenage years! Generates a poem constructed by popping word balloons with a tear. Each balloon represents one of 4000 possible word choices. Collaborate with the randomness of the program by stringing together logical sentence patterns and waiting to see the terrible poetry you can write. As words are added to the poem, they appear in the background as "constellations," adding to the absurd dream-like world of the game.
 ![Home screen](./Midterm_Project_Game/assets/home_screen.png)
 ![Home screen](./Midterm_Project_Game/assets/line1.png)
