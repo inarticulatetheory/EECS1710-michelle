@@ -23,6 +23,7 @@ void setupWaveform() {
 }
 
 void updateWaveform() {
+  
   // Perform the analysis
   waveform.analyze();
   
@@ -37,6 +38,13 @@ void updateWaveform() {
       map(i, 0, samples, 0, width),
       map(waveform.data[i], -1, 1, 0, height)
     );
+    //pass this same point to the path
+    addPointToPath(
+      map(i, 0, samples, 0, width),
+      map(waveform.data[i], -1, 1, 0, height)
+    );
   }
   endShape();
+
+
 }

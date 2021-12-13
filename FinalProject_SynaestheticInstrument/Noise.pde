@@ -52,13 +52,14 @@ void updateNoise(float x_, float y_, float w_, float h_, float z_) {
   
   //Map y from 0 to 1 
   //removing height (h) since face recognition would drop off if face not fully on canvas
-  float yoffset = map(y-h, 0+h, height-h, 0, 1);
+  float yoffset = map(y, 0+h, height-h, 0, 1);
   
   //Map that y value logarithmically to 150 - 1150 Hz to create a base frequency range
   float frequency = pow(1000, yoffset) + 150;
   
   //Use x of face mapped from -0.5 to 0.5 as a detune argument
-  float detune = map(x, 0, w, -0.5, 0.5);
+  //removing width (w) since face recognition would drop off if face not fully on canvas
+  float detune = map(x, 0+w, width-w, -0.5, 0.5);
 
   //Set frequencies, detuning, volume
   for (int i = 0; i < numSines; i++) {

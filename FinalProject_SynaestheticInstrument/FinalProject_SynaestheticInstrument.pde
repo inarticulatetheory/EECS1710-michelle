@@ -10,10 +10,14 @@
 3 - Face Detection adapted from Processing Examples > OpenCV > FaceDetection
 4 - Moon texture from http://planetpixelemporium.com/
 5 - "Notes" code adapted from Processing Examples > Sound > Env > Envelopes
-
+6 - The Nature of Code by Daniel Shiffman Path Following
 */
 
 import processing.sound.*;
+
+// Two vehicles
+//ArrayList<Vehicle> vehicles;
+boolean debug = false;
 
 void setup() {
   size(1200, 600, P3D);
@@ -22,6 +26,7 @@ void setup() {
   setupNoise();
   setupNotes();
   setupWaveform();
+  setupPath();
   setupFaceDetection();
   setupOrbitingLight(); //updated in Faces
 }
@@ -31,7 +36,17 @@ void draw() {
   
   updateNotes();
   updateWaveform();
+  updatePath();
   updateFaceDetection();
   //updateOrbitingLight();
+  
+  /*
+  for (Vehicle v : vehicles) {
+    // Path following and separation are worked on in this function
+    v.applyBehaviors(vehicles,path);
+    // Call the generic run method (update, borders, display, etc.)
+    v.run();
+  }
+  */
 
 }
