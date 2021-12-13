@@ -22,7 +22,8 @@ class Faces {
     face = createShape(SPHERE, w/2);
     face.setTexture(moonTexture);
     //noStroke();    
-    lights();
+    //lights();
+    updateOrbitingLight();
  
   }
   
@@ -43,7 +44,7 @@ class Faces {
     */
   
     //update the sound waves with current location
-    updateWaves(x + (w/2), y + (h/2), w, h);
+    updateNoise(x + (w/2), y + (h/2), w, h, z);
     z = h;
   }
   
