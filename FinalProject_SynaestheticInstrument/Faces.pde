@@ -23,7 +23,7 @@ class Faces {
     face.setTexture(moonTexture);
     //noStroke();    
     //lights();
-    updateOrbitingLight();
+    //updateOrbitingLight(); CHANGE
  
   }
   

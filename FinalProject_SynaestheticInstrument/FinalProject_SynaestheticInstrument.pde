@@ -11,24 +11,34 @@
 4 - Moon texture from http://planetpixelemporium.com/
 5 - "Notes" code adapted from Processing Examples > Sound > Env > Envelopes
 6 - The Nature of Code by Daniel Shiffman Path Following
+7 - The Coding Train "Starfield" example - https://github.com/CodingTrain/website/blob/main/CodingChallenges/CC_001_StarField
+
 */
 
 import processing.sound.*;
 
-// Two vehicles
-//ArrayList<Vehicle> vehicles;
-boolean debug = false;
+Star[] stars = new Star[800];
+Comet[] comets = new Comet[50];
+
 
 void setup() {
   size(1200, 600, P3D);
-  frameRate(90);
+  frameRate(120);
   
   setupNoise();
   setupNotes();
   setupWaveform();
-  setupPath();
   setupFaceDetection();
   setupOrbitingLight(); //updated in Faces
+  
+  //background stars and comets
+  for (int i = 0; i < stars.length; i++) {
+    stars[i] = new Star();
+  }
+  for (int i = 0; i < comets.length; i++) {
+    comets[i] = new Comet();
+  }
+  
 }
 
 void draw() {
@@ -36,17 +46,16 @@ void draw() {
   
   updateNotes();
   updateWaveform();
-  updatePath();
   updateFaceDetection();
-  //updateOrbitingLight();
-  
-  /*
-  for (Vehicle v : vehicles) {
-    // Path following and separation are worked on in this function
-    v.applyBehaviors(vehicles,path);
-    // Call the generic run method (update, borders, display, etc.)
-    v.run();
-  }
-  */
+  updateOrbitingLight();
 
+
+  for (int i = 0; i < stars.length; i++) {
+    stars[i].update();
+    stars[i].display();
+  }
+  for (int i = 0; i < comets.length; i++) {
+    comets[i].update();
+    comets[i].display();
+  }
 }
