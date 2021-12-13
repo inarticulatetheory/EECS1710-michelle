@@ -19,31 +19,8 @@ class Path {
 
   // Add a point to the path
   void addPoint(float x, float y) {
-    PVector point = new PVector(x, y);
+    //PVector point = new PVector(x, y);
+    PVector point = new PVector(x, y- height/3);
     points.add(point);
-  }
-
-  // Draw the path FOR DEBUGGING
-  void display() {
-    strokeJoin(ROUND);
-    
-    // Draw thick line for radius
-    stroke(175);
-    strokeWeight(radius*2);
-    noFill();
-    beginShape();
-    for (PVector v : points) {
-      vertex(v.x, v.y);
-    }
-    endShape(CLOSE);
-    // Draw thin line for center of path
-    stroke(0);
-    strokeWeight(1);
-    noFill();
-    beginShape();
-    for (PVector v : points) {
-      vertex(v.x, v.y);
-    }
-    endShape(CLOSE);
   }
 }

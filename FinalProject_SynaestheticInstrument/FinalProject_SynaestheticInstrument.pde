@@ -25,7 +25,6 @@ ArrayList<CelestialBodies> celestialBodies;
 
 void setup() {
   size(1200, 600, P3D);
-  frameRate(120);
   
   setupNoise();
   setupNotes();
@@ -39,9 +38,8 @@ void setup() {
   celestialBodies = new ArrayList<CelestialBodies>();
   for (int i = 0; i < 190; i++) {
     pushMatrix();
-    //translate to center of window to draw
-      translate(-width/2, -height/2, -width);
-      newCelestialBody(random(width),random(height),random(width));
+      translate(0, 0, 0);
+      newCelestialBody(random(width),random(height),random(200));
     popMatrix();
   }
   
@@ -53,6 +51,7 @@ void setup() {
     comets[i] = new Comet();
   }
   
+  frameRate(60);
 }
 
 void draw() {
@@ -85,17 +84,12 @@ void newPath() {
   // A path is a series of connected points
   // A more sophisticated path might be a curve
   path = new Path();
-  float offset = 30;
-  //'A' path
-  //Needs to go offscreen to complete a loop
-  //path.addPoint(0 - offset,height/2); //left
-  //path.addPoint(width/2,height/2); //middle
-  //path.addPoint(width + offset,height/2); //right
-
 }
 
 void newCelestialBody(float x, float y, float z) {
   float maxspeed = random(2,4);
   float maxforce = 0.3;
   celestialBodies.add(new CelestialBodies(new PVector(x,y,z),maxspeed,maxforce));
+      println("celestial body created at ", x, "/", y, "/", z);
+
 }

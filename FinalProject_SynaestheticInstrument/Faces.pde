@@ -28,8 +28,10 @@ class Faces {
   }
   
   void display() {
-    translate(x + (w/2), y + (h/2), z);
-    shape(face);
+    pushMatrix();
+      translate(x + (w/2), y + (h/2), z);
+      shape(face);
+    popMatrix();
   }
   
   

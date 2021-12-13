@@ -33,12 +33,11 @@ void updateWaveform() {
   for(int i = 0; i < samples; i++){
     // Draw current data of the waveform
     // Each sample in the data array is between -1 and +1 
-    vertex(
-      map(i, 0, samples, 0, width),
-      map(waveform.data[i], -1, 1, 0, height)
-    );
+    float x = map(i, 0, samples, 0, width);
+    float y = map(waveform.data[i], -1, 1, 0, height);
+    vertex(x,y);
     //pass this same point (a, b) to the path
-    path.addPoint(map(i, 0, samples, 0, width),map(waveform.data[i], -1, 1, 0, height));
+    path.addPoint(x,y);
   }
   endShape();
 
