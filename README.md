@@ -9,6 +9,7 @@ An instrument that manipulates a sine wave cluster through a moon avatar control
 
 
 ## [Project 3: Custom Pixel](/Project3_CustomPixel)
+### [Demo Video](https://vimeo.com/manage/videos/656294433)
 Adapted the [Pointilism Example from _Learning Processing_](http://learningprocessing.com/examples/chp15/example-15-14-Pointillism) to create a cross-stitch custom pixel. Customizations include the stitch concept and shape, adding a z-value for the stitches, and creating an embroidery hoop with a circular boundary to contain the stitches. With more time would also add a sewing needle, perhaps even making it interactive.
 
 ![Early in stitching](./Project3_CustomPixel/assets/project3_1.png)
