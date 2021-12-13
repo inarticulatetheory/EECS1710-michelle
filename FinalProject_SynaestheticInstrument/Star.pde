@@ -37,7 +37,7 @@ class Star {
     //pushMatrix();
     //translate to center of window to draw
     translate(0, 0, 0);
-      fill(255,0,0);
+      fill(255, 80);
       noStroke();
       float sx = map(x/z, 0, 1, 0, width/2);
       float sy = map(y/z, 0, 1, 0, height/2);

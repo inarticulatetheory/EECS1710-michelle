@@ -38,7 +38,7 @@ void updateWaveform() {
       map(waveform.data[i], -1, 1, 0, height)
     );
     //pass this same point (a, b) to the path
-    //path.addPoint(map(i, 0, samples, 0, width),map(waveform.data[i], -1, 1, 0, height));
+    path.addPoint(map(i, 0, samples, 0, width),map(waveform.data[i], -1, 1, 0, height));
   }
   endShape();
 
